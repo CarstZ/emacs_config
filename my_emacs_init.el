@@ -15,6 +15,7 @@
 		     zenburn-theme
 		     org
 		     auctex
+		     cdlatex
 		     auto-complete
 		     anzu
 		     )
@@ -49,27 +50,6 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(custom-enabled-themes (quote (deeper-blue)))
- '(global-auto-complete-mode t)
- '(line-number-mode nil)
- '(package-selected-packages
-   (quote
-    (anzu smartparens auto-complete-auctex ac-math auto-complete helm org-edna auctex))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;;==================================
 ;;Close Toolbar
@@ -79,6 +59,7 @@
 ;;Close Scrollbar
 (scroll-bar-mode -1)
 ;;Load zenburn-theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/")
 (load-theme 'zenburn t)
 ;;current line number enabled
 (line-number-mode t)
@@ -144,4 +125,9 @@
 ;; (global-auto-complete-mode t)
 
 
-;;This is a test;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; auctex customization ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;use cdLaTeX
+(add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
